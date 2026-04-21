@@ -20,7 +20,9 @@
 
 .footer-logo {
   height: 70px;
-  object-fit: contain;
+  width: 70px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .footer-address {
@@ -28,8 +30,8 @@
   color: #ccc;
   line-height: 1.7;
   margin: 0;
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
 }
 
 .footer-socials {
@@ -45,7 +47,9 @@
     height: 44px;
     border-radius: 50%;
     border: 2px solid #fff;
-    transition: border-color 0.2s, color 0.2s;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
 
     &:hover {
       border-color: #f0c040;
@@ -75,7 +79,7 @@
     font-size: 14px;
     color: #888;
     margin: 4px 0;
-     font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
   }
 }

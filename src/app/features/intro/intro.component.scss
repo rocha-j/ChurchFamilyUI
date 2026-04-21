@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 600ms ease;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.curtain-left,
+.curtain-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #111;
+  z-index: 2;
+  animation: curtain 700ms cubic-bezier(0.76, 0, 0.24, 1) 2400ms both;
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: left;
+}
+
+.curtain-right {
+  right: 0;
+  transform-origin: right;
+}
+
+@keyframes curtain {
+  0%   { transform: scaleX(0); }
+  50%  { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  z-index: 3;
+}
+
+.logo-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #f0c040;
+  overflow: hidden;
+  animation: logoEnter 1000ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms both;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@keyframes logoEnter {
+  from {
+    transform: translateX(100vw) rotate(0deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(720deg);
+    opacity: 1;
+  }
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 4px;
+  color: #fff;
+  animation: fadeUp 500ms ease 1300ms both;
+
+  span { color: #f0c040; }
+}
+
+.divider-line {
+  height: 1px;
+  background: #f0c040;
+  animation: expandLine 600ms ease 1800ms both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to   { width: 240px; }
+}
