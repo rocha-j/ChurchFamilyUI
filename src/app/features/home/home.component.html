@@ -1,0 +1,21 @@
+<div class="carousel-wrapper">
+  <button class="nav-btn prev" (click)="movePrev()">&#10094;</button>
+
+  <div class="carousel-viewport">
+    <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      @for (img of images; track img.url) {
+        <div class="slide">
+          <img [src]="img.url" [alt]="img.alt" />
+        </div>
+      }
+    </div>
+  </div>
+
+  <button class="nav-btn next" (click)="moveNext()">&#10095;</button>
+
+  <div class="dots">
+    @for (img of images; track img.url; let i = $index) {
+      <span class="dot" [class.active]="i === currentIndex" (click)="goTo(i)"> </span>
+    }
+  </div>
+</div>

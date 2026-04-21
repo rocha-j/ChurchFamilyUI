@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&display=swap');
+
+.cultos-page {
+  min-height: 50vh;
+  background-color: #0a0a0a;
+  padding: 80px 40px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.cultos-header {
+  text-align: center;
+  margin-bottom: 64px;
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 10vw, 100px);
+    color: #fff;
+    letter-spacing: 8px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .subtitle {
+    color: #888;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.culto-card {
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #222;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+}
+
+.card-day {
+  background: var(--accent);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  padding: 8px 20px;
+  display: inline-block;
+  align-self: flex-start;
+  border-radius: 0 0 8px 0;
+}
+
+.card-body {
+  padding: 28px 28px 16px;
+  flex: 1;
+}
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+.card-time {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+
+  .time-icon {
+    margin-right: 6px;
+    font-size: 13px;
+  }
+}
+
+.card-desc {
+  color: #888;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.card-footer {
+  padding: 20px 28px 28px;
+}
+
+.card-btn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: var(--accent);
+    color: #000;
+  }
+}
+
+@media (max-width: 600px) {
+  .cultos-page {
+    padding: 60px 20px;
+  }
+}

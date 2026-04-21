@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&display=swap');
+
+.contact-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.contact-wrapper {
+  background: #111;
+  border-radius: 16px;
+  border: 1px solid #222;
+  width: 100%;
+  max-width: 760px;
+  overflow: hidden;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  padding: 28px 40px;
+  background: #0d0d0d;
+  border-bottom: 1px solid #1e1e1e;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.3s;
+  }
+
+  .step-label {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  &.active {
+    .step-circle {
+      background: #f0c040;
+      border-color: #f0c040;
+      color: #000;
+    }
+    .step-label { color: #f0c040; }
+  }
+
+  &.done {
+    .step-circle {
+      background: #2a2a2a;
+      border-color: #f0c040;
+      color: #f0c040;
+    }
+    .step-label { color: #888; }
+  }
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: #2a2a2a;
+  margin: 0 12px;
+  margin-bottom: 18px;
+  transition: background 0.3s;
+
+  &.done { background: #f0c040; }
+}
+
+.form-body {
+  padding: 40px 40px 20px;
+}
+
+.form-section {
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 3px;
+    margin: 0 0 28px;
+  }
+
+  &.success {
+    text-align: center;
+    padding: 40px 0;
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #f0c040;
+      color: #000;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    p { color: #888; font-size: 15px; }
+  }
+}
+
+.form-hint {
+  color: #666;
+  font-size: 14px;
+  margin: -16px 0 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 1px;
+  }
+
+  input, select, textarea {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 12px 16px;
+    transition: border-color 0.2s;
+    outline: none;
+
+    &::placeholder { color: #444; }
+    &:focus { border-color: #f0c040; }
+  }
+
+  select option { background: #1a1a1a; }
+  textarea { height: 120px; resize: none; }
+}
+
+.required { color: #f0c040; }
+
+.ministerios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.ministerio-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input[type="checkbox"] { display: none; }
+
+  &.selected {
+    border-color: #f0c040;
+    color: #f0c040;
+    background: rgba(240, 192, 64, 0.08);
+  }
+
+  &:hover { border-color: #444; color: #ccc; }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 40px 28px;
+}
+
+.btn-next {
+  background: #f0c040;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover { background: #e0b030; }
+}
+
+.btn-back {
+  background: transparent;
+  color: #888;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover { border-color: #666; color: #ccc; }
+}
+
+.whatsapp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px 36px;
+
+  .divider-text {
+    font-size: 12px;
+    color: #444;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover { background: #1ebe5a; }
+}
+
+@media (max-width: 600px) {
+  .contact-wrapper { border-radius: 0; }
+  .form-body, .form-actions, .whatsapp-section { padding-left: 20px; padding-right: 20px; }
+  .stepper { padding: 20px; }
+  .form-row { grid-template-columns: 1fr; }
+}

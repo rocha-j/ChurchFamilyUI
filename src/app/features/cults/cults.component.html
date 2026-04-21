@@ -1,0 +1,25 @@
+<section class="cultos-page">
+  <div class="cultos-header">
+    <h1>CULTOS</h1>
+    <p class="subtitle">Venha fazer parte da nossa família</p>
+  </div>
+
+  <div class="cards-grid">
+    @for (culto of cultos; track culto.id) {
+      <div class="culto-card" [style.--accent]="culto.color">
+        <div class="card-day">{{ culto.dia }}</div>
+        <div class="card-body">
+          <h2 class="card-title">{{ culto.nome }}</h2>
+          <div class="card-time">
+            <span class="time-icon">⏱</span>
+            {{ culto.horario }}
+          </div>
+          <p class="card-desc">{{ culto.descricao }}</p>
+        </div>
+        <div class="card-footer">
+          <a [href]="culto.link" class="card-btn">Saiba mais</a>
+        </div>
+      </div>
+    }
+  </div>
+</section>

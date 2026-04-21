@@ -1,0 +1,119 @@
+<section class="contact-page">
+  <div class="contact-wrapper">
+
+    <div class="stepper">
+      @for (step of steps; track step.id; let i = $index) {
+        <div class="step" [class.active]="currentStep === i" [class.done]="currentStep > i">
+          <div class="step-circle">{{ i + 1 }}</div>
+          <span class="step-label">{{ step.label }}</span>
+        </div>
+        @if (i < steps.length - 1) {
+          <div class="step-line" [class.done]="currentStep > i"></div>
+        }
+      }
+    </div>
+
+    <div class="form-body">
+
+      @if (currentStep === 0) {
+        <div class="form-section">
+          <h2>Informações de Contato</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome <span class="required">*</span></label>
+              <input type="text" [(ngModel)]="form.nome" placeholder="João" />
+            </div>
+            <div class="form-group">
+              <label>Sobrenome <span class="required">*</span></label>
+              <input type="text" [(ngModel)]="form.sobrenome" placeholder="Silva" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Telefone <span class="required">*</span></label>
+              <input type="tel" [(ngModel)]="form.telefone" placeholder="(11) 99999-9999" />
+            </div>
+            <div class="form-group">
+              <label>E-mail <span class="required">*</span></label>
+              <input type="email" [(ngModel)]="form.email" placeholder="exemplo@gmail.com" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Mensagem <span class="required">*</span></label>
+            <textarea [(ngModel)]="form.mensagem" placeholder="Deixe sua mensagem aqui..."></textarea>
+          </div>
+        </div>
+      }
+
+      @if (currentStep === 1) {
+        <div class="form-section">
+          <h2>Informações Pessoais</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input type="date" [(ngModel)]="form.nascimento" />
+            </div>
+            <div class="form-group">
+              <label>Estado Civil</label>
+              <select [(ngModel)]="form.estadoCivil">
+                <option value="">Selecione</option>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Endereço</label>
+            <input type="text" [(ngModel)]="form.endereco" placeholder="Rua, número, bairro" />
+          </div>
+          <div class="form-group full">
+            <label>Como nos conheceu?</label>
+            <select [(ngModel)]="form.comoConheceu">
+              <option value="">Selecione</option>
+              <option value="instagram">Instagram</option>
+              <option value="amigo">Indicação de amigo</option>
+              <option value="youtube">YouTube</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+        </div>
+      }
+
+      @if (currentStep === 2) {
+        <div class="form-section success">
+          <div class="success-icon">✓</div>
+          <h2>Mensagem enviada!</h2>
+          <p>Obrigado por entrar em contato. Em breve nossa equipe retornará.</p>
+        </div>
+      }
+
+    </div>
+
+    <div class="form-actions">
+      @if (currentStep === 1) {
+        <button class="btn-back" (click)="prev()">Voltar</button>
+      }
+      @if (currentStep === 0) {
+        <button class="btn-next" (click)="next()">Próximo</button>
+      }
+      @if (currentStep === 1) {
+        <button class="btn-next" (click)="submit()">Enviar</button>
+      }
+    </div>
+
+    @if (currentStep < 2) {
+      <div class="whatsapp-section">
+        <span class="divider-text">ou fale diretamente</span>
+        <a class="whatsapp-btn" href="https://wa.me/5511948803773?text=Olá!%20Vim%20pelo%20site%20da%20Igreja%20Familia%20São%20Bernardo." target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Falar pelo WhatsApp
+        </a>
+      </div>
+    }
+
+  </div>
+</section>
