@@ -24,7 +24,7 @@ export class CultsComponent {
       dia: 'QUARTA',
       horario: '19:30H',
       descricao: 'Quarta Profetica com louvor, palavra e comunhão.',
-      color: '#10b981',
+      color: '#f0c040',
       link: '#',
     },
     {
@@ -33,7 +33,7 @@ export class CultsComponent {
       dia: 'SEGUNDA',
       horario: '19:30H',
       descricao: 'Um culto especial de fé, intercessão e crescimento.',
-      color: '#a78bfa',
+      color: '#f0c040',
       link: '#',
     },
     {
@@ -42,25 +42,25 @@ export class CultsComponent {
       dia: 'DOMINGO',
       horario: '08:00H',
       descricao: 'Todo domingo uma oportunidade de aprendizado e crescimento espiritual.',
-      color: '#da47c6',
+      color: '#f0c040',
       link: '#',
     },
-        {
+    {
       id: 5,
       nome: 'Instituto saber',
       dia: 'DOMINGO',
       horario: '08:00H',
       descricao: 'Todo domingo uma oportunidade de aprendizado e crescimento espiritual.',
-      color: '#27cbd6',
+      color: '#f0c040',
       link: '#',
     },
-        {
+    {
       id: 6,
       nome: 'Instituto saber',
       dia: 'DOMINGO',
       horario: '08:00H',
       descricao: 'Todo domingo uma oportunidade de aprendizado e crescimento espiritual.',
-      color: '#e41717',
+      color: '#f0c040',
       link: '#',
     },
   ];

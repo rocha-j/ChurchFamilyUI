@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&display=swap');
 
+
+:host {
+  display: block;
+  height: 100%;
+
+}
+
 .cultos-page {
   min-height: 50vh;
   background-color: #0a0a0a;
@@ -13,7 +20,7 @@
 
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 10vw, 100px);
+    font-size: clamp(56px, 10vw, 50px);
     color: #fff;
     letter-spacing: 8px;
     margin: 0;

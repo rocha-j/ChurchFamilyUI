@@ -1,11 +1,17 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
 .shell {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .content {
   flex: 1;
+  position: relative;
 }
 
 .hidden {

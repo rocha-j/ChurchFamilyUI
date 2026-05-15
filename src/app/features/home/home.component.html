@@ -3,10 +3,14 @@
 
   <div class="carousel-viewport">
     <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
-      @for (img of images; track img.url) {
-        <div class="slide">
-          <img [src]="img.url" [alt]="img.alt" />
-        </div>
+      @for (slide of slides; track slide.label) {
+        <div
+          class="slide"
+          [style.background-color]="slide.bg"
+          [style.background-image]="'url(' + slide.imgUrl + ')'"
+          [style.background-size]="'cover'"
+          [style.background-position]="'center'"
+        ></div>
       }
     </div>
   </div>
@@ -14,8 +18,29 @@
   <button class="nav-btn next" (click)="moveNext()">&#10095;</button>
 
   <div class="dots">
-    @for (img of images; track img.url; let i = $index) {
-      <span class="dot" [class.active]="i === currentIndex" (click)="goTo(i)"> </span>
+    @for (slide of slides; track slide.label; let i = $index) {
+      <span class="dot" [class.active]="i === currentIndex" (click)="goTo(i)"></span>
     }
   </div>
+</div>
+
+<div class="home-cards">
+  @for (card of cards; track card.route) {
+    <a
+      class="home-card"
+      [routerLink]="card.route"
+      [style.background-color]="card.bg"
+      [style.background-image]="'url(' + card.imgUrl + ')'"
+      [style.background-size]="'cover'"
+      [style.background-position]="'center'"
+    >
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <img class="card-icon" [src]="card.icon" [alt]="card.title">
+        <h3 class="card-title">{{ card.title }}</h3>
+        <p class="card-desc">{{ card.desc }}</p>
+        <span class="card-btn">{{ card.cta }}</span>
+      </div>
+    </a>
+  }
 </div>

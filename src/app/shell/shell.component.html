@@ -2,10 +2,12 @@
   <app-intro (done)="onIntroDone()"></app-intro>
 }
 
-<div [class.hidden]="showIntro">
+<div class="shell" [class.hidden]="showIntro">
   <app-header></app-header>
-  <main [@routeAnimation]="getRouteState(outlet)">
+
+  <main class="content" [@routeAnimation]="getRouteState(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
   </main>
+
   <app-footer></app-footer>
 </div>

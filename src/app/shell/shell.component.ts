@@ -1,9 +1,34 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { IntroComponent } from '../features/intro/intro.component';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, query, style, animate, group } from '@angular/animations';
+
+const routeOrder = ['home', 'about', 'cults', 'contact'];
+
+function getRouteIndex(url: string): number {
+  const segment = url.split('/').filter(Boolean)[0] ?? 'home';
+  const idx = routeOrder.indexOf(segment);
+  return idx === -1 ? 0 : idx;
+}
+
+export function slideAnimation(direction: 'left' | 'right') {
+  const enterFrom = direction === 'left' ? '100%' : '-100%';
+  const leaveTo   = direction === 'left' ? '-100%' : '100%';
+  return [
+    query(':enter', style({ transform: `translateX(${enterFrom})`, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }), { optional: true }),
+    query(':leave', style({ transform: 'translateX(0)', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }), { optional: true }),
+    group([
+      query(':leave', [
+        animate('420ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: `translateX(${leaveTo})` }))
+      ], { optional: true }),
+      query(':enter', [
+        animate('420ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)' }))
+      ], { optional: true })
+    ])
+  ];
+}
 
 @Component({
   selector: 'app-shell',
@@ -11,27 +36,23 @@ import { trigger, transition, style, animate } from '@angular/animations';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, IntroComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('routeAnimation', [
-      transition('* <=> *', [
-        style({ opacity: 0, transform: 'translateY(16px)' }),
-        animate('350ms ease', style({ opacity: 1, transform: 'translateY(0)' }))
-      ])
+      transition(':increment', slideAnimation('left')),
+      transition(':decrement', slideAnimation('right'))
     ])
   ]
 })
 export class ShellComponent {
   showIntro = true;
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
   onIntroDone() {
     this.showIntro = false;
-    this.cdr.markForCheck(); // força a detecção de mudança
   }
 
-  getRouteState(outlet: RouterOutlet) {
-    return outlet.isActivated ? outlet.activatedRoute.snapshot.url.join('/') : '';
+  getRouteState(outlet: RouterOutlet): string {
+    if (!outlet.isActivated) return '0';
+    const url = outlet.activatedRoute.snapshot.url.join('/');
+    return String(getRouteIndex(url));
   }
 }

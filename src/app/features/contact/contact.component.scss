@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&display=swap');
 
+:host {
+  display: block;
+  height: 100%;
+
+}
 .contact-page {
   min-height: 100vh;
   background: #0a0a0a;
@@ -9,7 +14,6 @@
   padding: 60px 20px;
   font-family: 'Barlow', sans-serif;
 }
-
 .contact-wrapper {
   background: #111;
   border-radius: 16px;
