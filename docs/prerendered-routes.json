@@ -1,0 +1,9 @@
+{
+  "routes": {
+    "/ChurchFamilyUI": {},
+    "/ChurchFamilyUI/about": {},
+    "/ChurchFamilyUI/contact": {},
+    "/ChurchFamilyUI/cults": {},
+    "/ChurchFamilyUI/home": {}
+  }
+}
