@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { CultsComponent } from './features/cults/cults.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { AboutComponent } from './features/about/about.component';
+import { OfferComponent } from './features/offer/offer.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: 'cults', component: CultsComponent },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'offer', component: OfferComponent }
     ]
   }
 ];
