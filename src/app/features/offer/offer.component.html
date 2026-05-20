@@ -1,1 +1,24 @@
-<p>offer.component works</p>
+<section class="offer-page">
+  <h1 class="offer-title">DÍZIMOS E OFERTAS</h1>
+
+  <div class="offer-cards">
+    @for (card of cards; track card.id) {
+      <div class="offer-card" [style.--accent]="card.color">
+        <div class="card-header">
+          <span class="card-tag">{{ card.tag }}</span>
+          <h2 class="card-title">{{ card.title }}</h2>
+          <p class="card-desc">{{ card.desc }}</p>
+        </div>
+
+        <div class="card-qr">
+          <img [src]="card.qr" [alt]="card.title" />
+        </div>
+
+        <div class="card-footer">
+          <span class="pix-label">Chave PIX</span>
+          <span class="pix-key">{{ card.pix }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</section>

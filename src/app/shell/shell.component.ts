@@ -5,7 +5,7 @@ import { FooterComponent } from '../shared/footer/footer.component';
 import { IntroComponent } from '../features/intro/intro.component';
 import { trigger, transition, query, style, animate, group } from '@angular/animations';
 
-const routeOrder = ['home', 'about', 'cults', 'contact'];
+const routeOrder = ['home', 'about', 'cults', 'contact', 'offer'];
 
 function getRouteIndex(url: string): number {
   const segment = url.split('/').filter(Boolean)[0] ?? 'home';
