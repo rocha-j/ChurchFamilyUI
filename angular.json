@@ -24,6 +24,8 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "baseHref": "/ChurchFamilyUI/",
+            "outputMode": "static",
             "assets": [
               {
                 "glob": "**/*",
@@ -31,28 +33,15 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
             "security": {
               "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "src/server.ts"
             }
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "20kb",
-                  "maximumError": "50kb"
-                }
+                { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
+                { "type": "anyComponentStyle", "maximumWarning": "20kb", "maximumError": "50kb" }
               ],
               "outputHashing": "all"
             },
@@ -67,17 +56,18 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "ChurchFamilyUI:build:production"
-            },
-            "development": {
-              "buildTarget": "ChurchFamilyUI:build:development"
-            }
+            "production": { "buildTarget": "ChurchFamilyUI:build:production" },
+            "development": { "buildTarget": "ChurchFamilyUI:build:development" }
           },
           "defaultConfiguration": "development"
         },
-        "test": {
-          "builder": "@angular/build:unit-test"
+        "test": { "builder": "@angular/build:unit-test" },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "buildTarget": "ChurchFamilyUI:build:production",
+            "baseHref": "/ChurchFamilyUI/"
+          }
         }
       }
     }
