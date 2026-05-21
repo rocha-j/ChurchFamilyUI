@@ -13,18 +13,23 @@ function getRouteIndex(url: string): number {
   return idx === -1 ? 0 : idx;
 }
 
-export function slideAnimation(direction: 'left' | 'right') {
-  const enterFrom = direction === 'left' ? '100%' : '-100%';
-  const leaveTo   = direction === 'left' ? '-100%' : '100%';
+function smoothAnimation() {
   return [
-    query(':enter', style({ transform: `translateX(${enterFrom})`, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }), { optional: true }),
-    query(':leave', style({ transform: 'translateX(0)', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }), { optional: true }),
+    query(':enter, :leave', style({
+      position: 'absolute',
+      top: 0, left: 0,
+      width: '100%',
+      height: '100%'
+    }), { optional: true }),
     group([
       query(':leave', [
-        animate('420ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: `translateX(${leaveTo})` }))
+        animate('300ms ease',
+          style({ opacity: 0 }))
       ], { optional: true }),
       query(':enter', [
-        animate('420ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)' }))
+        style({ opacity: 0 }),
+        animate('300ms ease',
+          style({ opacity: 1 }))
       ], { optional: true })
     ])
   ];
@@ -36,18 +41,26 @@ export function slideAnimation(direction: 'left' | 'right') {
   imports: [RouterOutlet, HeaderComponent, FooterComponent, IntroComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
-  animations: [
-    trigger('routeAnimation', [
-      transition(':increment', slideAnimation('left')),
-      transition(':decrement', slideAnimation('right'))
-    ])
-  ]
+ animations: [
+  trigger('routeAnimation', [
+    transition('* <=> *', smoothAnimation())
+  ])
+]
 })
 export class ShellComponent {
   showIntro = true;
+  isAnimating = false;
 
   onIntroDone() {
     this.showIntro = false;
+  }
+
+  onAnimationStart() {
+    this.isAnimating = true;
+  }
+
+  onAnimationDone() {
+    this.isAnimating = false;
   }
 
   getRouteState(outlet: RouterOutlet): string {

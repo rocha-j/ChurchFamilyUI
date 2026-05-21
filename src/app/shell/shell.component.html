@@ -5,7 +5,11 @@
 <div class="shell" [class.hidden]="showIntro">
   <app-header></app-header>
 
-  <main class="content" [@routeAnimation]="getRouteState(outlet)">
+  <main class="content"
+    [class.animating]="isAnimating"
+    [@routeAnimation]="getRouteState(outlet)"
+    (@routeAnimation.start)="onAnimationStart()"
+    (@routeAnimation.done)="onAnimationDone()">
     <router-outlet #outlet="outlet"></router-outlet>
   </main>
 
